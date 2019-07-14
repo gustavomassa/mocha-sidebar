@@ -365,6 +365,7 @@
         "watch": "tsc -watch -p ./"
     },
     "devDependencies": {
+        "@types/bluebird-global": "^3.5.12",
         "@types/node": "^12.6.2",
         "@types/vscode": "^1.36.0",
         "eslint": "^5.16.0",

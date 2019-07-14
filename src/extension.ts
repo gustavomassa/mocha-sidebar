@@ -1,5 +1,8 @@
 export {};
 
+import * as Promise from 'bluebird';
+global.Promise = Promise;
+
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 
