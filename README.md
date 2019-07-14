@@ -48,10 +48,14 @@
 * **Workspace** -   Currently not supported there is a workaround for solving it for more details [#107](https://github.com/maty21/mocha-sidebar/issues/107)
 
 
+#### WIP
 
+* Update mocha version to 6.0
+* Migrating to typescript
+* Using mocha-sidebar config file per project with mocha config file (same file for both)
+* Add a select/combo box to select the project to view/run/debug tests 
 
-
-#### Collaborators:
+#### Collaborators
 - Maty Zisserman
 - Yehiyam Livneh
 
