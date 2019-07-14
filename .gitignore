@@ -1,4 +1,6 @@
+out
 node_modules
+.vscode-test/
 **/debug.log
 .vscode/symbols.json
 .vagrant

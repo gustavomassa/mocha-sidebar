@@ -1,4 +1,0 @@
-{
-    "mocha.files.glob": "test/**/*.spec.js",
-    "mocha.requires": ["ts-node/register"]
-}
