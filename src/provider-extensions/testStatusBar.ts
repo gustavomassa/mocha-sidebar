@@ -1,9 +1,11 @@
-export {};
+export { };
 
-const vscode = require("vscode");
+import * as vscode from "vscode";
 const core = require("../core");
 
 class testsStatusBar {
+  private status: vscode.StatusBarItem;
+
   init() {
     this.status = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, -1000);
     this.status.text = this.statusTemplate(0, 0);

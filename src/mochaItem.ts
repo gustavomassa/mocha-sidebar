@@ -1,8 +1,15 @@
-export {};
+export { };
 
-const vscode = require("vscode");
+import * as vscode from 'vscode';
 const navigateEditorItem = require("./provider-extensions/NavigateEditorItem.js.js");
+
+
 class mochaItem extends vscode.TreeItem {
+  private name: string;
+  private item: any;
+  private hierarchyLevel: any;
+  private line: any;
+
   constructor(label, collapsibleState, contextValue, iconPath, item, hierarchyLevel = 0) {
     super(label, collapsibleState);
     this.contextValue = contextValue;

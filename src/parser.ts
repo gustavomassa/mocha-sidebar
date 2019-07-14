@@ -1,4 +1,4 @@
-'use strict';
+export {};
 
 const babylon = require('babylon');
 const fs = require('fs');

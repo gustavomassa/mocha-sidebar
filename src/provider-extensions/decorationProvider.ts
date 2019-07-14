@@ -1,6 +1,6 @@
 export {};
 
-const vscode = require("vscode");
+import * as vscode from 'vscode';
 const stacktraceParser = require("stacktrace-parser");
 const decorationType = require("./decorationType");
 const consts = require("./consts");
@@ -9,6 +9,12 @@ const core = require("../core");
 //const notification = require("../notificationsProvider");
 
 class decorationProvider {
+  private pushStyle: any[];
+  private currentFile: any;
+  private decoratorAndStyle: any;
+  private currentResults: any;
+
+
   constructor() {
     this.pushStyle = [];
     this.currentFile = null;
@@ -81,7 +87,8 @@ class decorationProvider {
   setDecorationOnUpdateResults({ item, status, result }) {
     this.removeSpecificStyle(item.fullName);
     this.decoratorAndStyle.push({ status, test: item });
-    this.setDecoration(status, item, result);
+    this.setDecoration(status, item);
+    //this.setDecoration(status, item, result);
   }
 
   clearData() {

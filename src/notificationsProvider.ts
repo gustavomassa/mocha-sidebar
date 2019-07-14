@@ -1,9 +1,11 @@
 export {};
 
-const vscode = require("vscode");
+import * as vscode from 'vscode';
 const EventEmitter = require("events");
 
 class notificationProvider extends EventEmitter {
+  private events: any;
+
   constructor() {
     super();
     this.events = {

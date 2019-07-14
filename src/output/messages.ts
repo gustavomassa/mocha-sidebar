@@ -1,7 +1,14 @@
 export {};
 
-const vscode = require("vscode");
+import * as vscode from 'vscode';
+
+
 class messages {
+  private channelName: any;
+  private messageType: any;
+  private channels: any;
+  private popUp: any;
+  
   constructor() {
     this.channelName = {
       COVERAGE: "sideBar-coverage",

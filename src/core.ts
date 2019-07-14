@@ -1,4 +1,4 @@
-export {};
+export { };
 
 const EventEmitter = require("events");
 const { promisify } = require("util");
@@ -12,7 +12,20 @@ const consts = require("./provider-extensions/consts");
 const escapeRegExp = require("escape-regexp");
 const debuggerProvider = require("./provider-extensions/runDebug");
 const messages = require("./output/messages");
+
+
 class Core extends EventEmitter {
+  private _runner: any;
+  private _tests: any;
+  private _formatedTest: any;
+  private enrichedTests: any;
+  private lastRun: any;
+  private events: any;
+  private runTypes: any;
+  private debugMap: any;
+  private enrichedDescribers: any;
+
+
   constructor() {
     super();
     this._runner = new runner();
@@ -150,7 +163,7 @@ class Core extends EventEmitter {
       this.execute(testItem, this.runTypes.TEST);
     }
   }
-  _enrichedMoreDataForTests(tests, text) {
+  _enrichedMoreDataForTests(tests, text?: string) {
     return tests.map(t => {
       let meta = navigateEditorItem(t.file, t.name, text)[0];
       t.rawData = t;
@@ -165,7 +178,7 @@ class Core extends EventEmitter {
   _trimPrevNameForLineNumber(current, prev) {
     return current.replace(prev, "").trim();
   }
-  _enrichedMoreDataForDescribers(tests, text) {
+  _enrichedMoreDataForDescribers(tests, text?: string) {
     const describerObject = [];
     tests.forEach(test =>
       test.suitePath.forEach((p, i, arr) => {

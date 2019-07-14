@@ -1,16 +1,18 @@
-export {};
+export { };
 
-const { CodeLens, Range } = require('vscode');
+import { CodeLens, Range } from 'vscode';
 class MochaLensDescriberItem extends CodeLens {
+    private title: string;
+
     constructor(commandRange, item, selector, name) {
-        super(commandRange)
+        super(commandRange);
         // this._item = item;
-        this.title = "title"
+        this.title = "title";
         this.command = {
             command: 'mocha-maty.runDescriberLevelTest',
             title: 'Run Suite',
             arguments: [item]
-        }
+        };
     }
 
 

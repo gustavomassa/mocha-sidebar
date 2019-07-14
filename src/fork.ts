@@ -1,14 +1,16 @@
 export {};
 
+import * as vscode from 'vscode';
 const ChildProcess = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const Promise = require('bluebird');
 const trimArray = require('./utils').trimArray;
-const vscode = require('vscode');
 //const emptyPort = require('empty-port');
 const config = require('./config');
 const access = Promise.promisify(fs.access);
+const vm = require('vm');
+const v8debug = vm.runInDebugContext('Debug');
 const debug = typeof v8debug === 'object' || /--debug|--inspect/.test(process.execArgv.join(' '));
 
 
@@ -72,7 +74,7 @@ function nodeJSPath() {
         } else {
           const err = new Error('cannot find nodejs');
 
-          err.code = 'ENOENT';
+          err['code'] = 'ENOENT';
 
           reject(err);
         }

@@ -1,6 +1,6 @@
-export {};
+export { };
 
-const vscode = require("vscode");
+import * as vscode from 'vscode';
 const { files } = require("../config");
 
 const abstractCodeLens = require("./abstractCodeLens");
@@ -17,6 +17,16 @@ const TYPE = {
   debug: "debug"
 };
 class mochaLens extends abstractCodeLens {
+  private _context: any;
+  private notification: any;
+  private tests: any;
+  private describers: any;
+  private lastDocument: any;
+  private listOfSpecificFileItems: any;
+  private _counterOfItemsThatAlreadySet: any;
+  private lens: any;
+  private incomingResultsStatus: any;
+
   constructor(context) {
     super();
 

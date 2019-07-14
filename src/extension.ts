@@ -7,7 +7,7 @@ global.Promise = Promise;
 // Import the module and reference it with the alias vscode in your code below
 
 const config = require("./config");
-const vscode = require("vscode");
+import * as vscode from 'vscode';
 const treeProvider = require("./src/treeProvider");
 const lensProvider = require("./src/provider-extensions/mochaLens");
 const decorationProvider = require("./src/provider-extensions/decorationProvider");

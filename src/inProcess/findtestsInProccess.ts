@@ -1,11 +1,11 @@
 export {};
 
+
 const
   Glob = require('glob').Glob,
   Mocha = require('mocha'),
   path = require('path'),
   Promise = require('bluebird'),
-  vscode = require('vscode'),
   trimArray = require('../utils').trimArray;
 
 //const   args = JSON.parse(process.argv[process.argv.length - 1]);

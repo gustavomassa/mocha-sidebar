@@ -3,10 +3,7 @@ export {};
 const
   Glob = require('glob').Glob,
   Mocha = require('mocha'),
-  path = require('path'),
-  Promise = require('bluebird'),
-  vscode = require('vscode'),
-  trimArray = require('../utils').trimArray;
+  path = require('path');
 
 //const   args = JSON.parse(process.argv[process.argv.length - 1]);
 
@@ -17,7 +14,7 @@ function findTests(params) {
     //require(requirePath);
 
   return createMocha(params.rootPath, params.options, params.files.glob, params.files.ignore)
-    .then(mocha => crawlTests(mocha.suite))
+    .then((mocha: any) => crawlTests(mocha.suite))
     .then(tests => tests)
     .catch(err => {
       console.error(err.stack);

@@ -1,6 +1,6 @@
 export {};
 
-const vscode = require("vscode");
+import * as vscode from 'vscode';
 const escapeStringRegexp = require("escape-string-regexp");
 const path = require("path");
 const config = require("../config");
@@ -10,6 +10,11 @@ const clone = require("clone");
 const messages = require("../output/messages");
 
 class debuggerProvider {
+  private currentElement: any;
+  private _provider: any;
+  private callFunctionOnTerminate: any;
+  private results: any[];
+
   constructor() {
     this.currentElement = null;
     this._provider = null;

@@ -1,4 +1,4 @@
-// const vscode = require('vscode');
+// import * as vscode from 'vscode';
 // const Glob = require('glob').Glob;
 // const path = require('path');
 // const { runTestsOnSave, files, sideBarOptions, coverage } = require('./config');

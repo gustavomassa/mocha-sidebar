@@ -2,7 +2,7 @@ export {};
 
 const escapeRegExp = require("escape-regexp");
 const MochaShim = require("./mochashim");
-const vscode = require("vscode");
+import * as vscode from 'vscode';
 
 let mochaProviderRef = null;
 

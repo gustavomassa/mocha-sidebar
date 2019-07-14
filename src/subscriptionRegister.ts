@@ -1,11 +1,16 @@
 export {};
 
-const vscode = require("vscode");
+import * as vscode from 'vscode';
 const path = require("path");
 const core = require("./core");
 const config = require("./config");
 const { coreCommands, runTestAtCursor, runTestsByPattern, selectAndRunTest } = require("./codeCommands");
+
+
 class subscriptionRegister {
+  private _treeProvider: any;
+  private _coverage: any;
+
   init(context, treeProvider, coverage) {
     const subscriptions = context.subscriptions;
     const { commands } = vscode;

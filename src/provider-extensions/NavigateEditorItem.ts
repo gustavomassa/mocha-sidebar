@@ -1,6 +1,6 @@
 export {};
 
-const vscode = require("vscode");
+import * as vscode from 'vscode';
 const fs = require("fs");
 //const lineNumber = require('line-number');
 const splitLines = require("split-lines");

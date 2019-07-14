@@ -1,8 +1,7 @@
 export {};
 
-const { window, OverviewRulerLane } = require('vscode');
+import { window, OverviewRulerLane } from 'vscode';
 const path = require('path');
-
 
 
 const fail = () => {

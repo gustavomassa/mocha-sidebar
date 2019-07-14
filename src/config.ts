@@ -1,6 +1,6 @@
 export {};
 
-const vscode = require("vscode");
+import * as vscode from 'vscode';
 const path = require("path");
 const { getInstalledPathSync } = require("get-installed-path");
 const messages = require("./output/messages");

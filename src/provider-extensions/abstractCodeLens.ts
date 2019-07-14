@@ -1,9 +1,11 @@
+import { EventEmitter, Event } from 'vscode';
 
 
 class AbstractCodeLensProvider {
+    private _onChangeCodeLensesEmitter: EventEmitter<any>;
+    private onDidChangeCodeLenses: Event<any>;
 
     constructor() {
-        const { EventEmitter } = require('vscode');
         this._onChangeCodeLensesEmitter = new EventEmitter();
         this.onDidChangeCodeLenses = this._onChangeCodeLensesEmitter.event;
     }

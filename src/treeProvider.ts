@@ -1,6 +1,6 @@
-export {};
+export { };
 
-const vscode = require("vscode");
+import * as vscode from 'vscode';
 var clone = require("clone");
 const mochaItem = require("./mochaItem");
 const path = require("path");
@@ -12,6 +12,19 @@ const { getRelevantStatusFromResults } = require("./provider-extensions/setItemR
 const core = require("./core");
 
 class treeProvider {
+  private _onDidChangeTreeData: any;
+  private onDidChangeTreeData: any;
+  private _formatedTest: any;
+  private _testCounter: number;
+  private incomingResultsStatus: any;
+  private currentResultWithItem: any[];
+  private rootElement: any;
+  private _iconPath: any;
+  private _hierarchyLevel: number;
+  private _tests: any;
+  private item: any;
+  private results: any;
+
   constructor() {
     this._onDidChangeTreeData = new vscode.EventEmitter();
     this.onDidChangeTreeData = this._onDidChangeTreeData.event;
@@ -104,7 +117,7 @@ class treeProvider {
     if (!element) {
       return nodes;
     }
-    Object.entries(element).forEach(item => {
+    Object.entries(element).forEach((item: any) => {
       if (item[0] == "meta") {
         return;
       }

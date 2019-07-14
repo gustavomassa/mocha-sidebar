@@ -1,6 +1,6 @@
 export {};
 
-const vscode = require("vscode");
+import * as vscode from 'vscode';
 const path = require("path");
 const runner = require("./runner");
 const parser = require("./parser");
@@ -44,7 +44,7 @@ class commands {
     try {
       await core.runFailedTests();
     } catch (error) {
-      vscode.window.showErrorMessage(`Failed to rerun failed tests due to ${err.message}`);
+      vscode.window.showErrorMessage(`Failed to rerun failed tests due to ${error.message}`);
     }
   }
 
