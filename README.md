@@ -51,7 +51,7 @@
 #### WIP
 
 * Update mocha version to 6.0
-* Migrating to typescript
+* Migrating project to typescript based on vscode helloworld-sample [(https://github.com/Microsoft/vscode-extension-samples/tree/master/helloworld-sample)](https://github.com/Microsoft/vscode-extension-samples/tree/master/helloworld-sample)
 * Using mocha-sidebar config file per project with mocha config file (same file for both)
 * Add a select/combo box to select the project to view/run/debug tests 
 
