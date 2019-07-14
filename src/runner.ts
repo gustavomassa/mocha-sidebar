@@ -7,6 +7,10 @@ const vscode = require("vscode");
 let mochaProviderRef = null;
 
 class Runner {
+  private lastRunResult: any;
+  private tests: any;
+
+
   constructor() {
     this.lastRunResult = null;
   }
@@ -19,15 +23,15 @@ class Runner {
     return await MochaShim.findTests(vscode.workspace.rootPath);
   }
 
-  async runAsyncTests(testFiles, grep, logMessages) {
+  async runAsyncTests(testFiles, grep, logMessages?: any) {
     const res = await MochaShim.runTests(testFiles, grep, logMessages);
     this.lastRunResult = res;
     return res;
   }
 
   _runMocha(testFiles, grep, logMessages) {
-    let tests = testFiles.map(test => test.file);
-    return MochaShim.runAsyncTests(this._dedupeStrings(tests), grep, logMessages).then(
+    this.tests = testFiles.map(test => test.file);
+    return MochaShim.runAsyncTests(this._dedupeStrings(this.tests), grep, logMessages).then(
       result => {
         this.lastRunResult = result;
         const numFailed = (result.failed || []).length;
@@ -54,11 +58,11 @@ class Runner {
   }
   //TODO: delete this
   runAll(logMessages) {
-    return this.runAsyncTests(tests.map(test => test.file), null, logMessages);
+    return this.runAsyncTests(this.tests.map(test => test.file), null, logMessages);
   }
 
   async runWithGrep(grep) {
-    const res = await this.runAsyncTests(tests.map(test => test.file), grep);
+    const res = await this.runAsyncTests(this.tests.map(test => test.file), grep);
     mochaProviderRef.hookResultsFromCommands(res);
   }
 
@@ -78,14 +82,16 @@ class Runner {
   }
 
   async runLastSet() {
+    let res = null;
     const failed = (this.lastRunResult || {}).failed || [],
       passed = (this.lastRunResult || {}).passed || [],
       set = failed.concat(passed);
+
     if (!set.length) {
       vscode.window.showWarningMessage(`No tests were ran.`);
       return new Promise(resolve => resolve());
     } else {
-      const res = this.runAsyncTests(this._dedupeStrings(set.map(test => test.file)), `^${set.map(test => `(${escapeRegExp(test.fullName)})`).join("|")}$`);
+      res = this.runAsyncTests(this._dedupeStrings(set.map(test => test.file)), `^${set.map(test => `(${escapeRegExp(test.fullName)})`).join("|")}$`);
     }
 
     mochaProviderRef.hookResultsFromCommands(res);
